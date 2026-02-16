@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- title and logo -->
     <title>SwiftCart E-Commerce | Mission Restart 1st Assignment</title>
-    <link rel="shortcut icon" href="./assets/fav-ico.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/images/fav-ico.png" type="image/x-icon">
 
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -25,12 +25,46 @@
         rel="stylesheet">
 
     <!-- style-sheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
     <header>
+        <nav class="bg-base-100 shadow-sm">
+            <div class="w-11/12 mx-auto navbar">
+                <div class="navbar-start">
+                    <a href="index.html" class="btn btn-ghost text-2xl text-primary font-bold">SwiftCart</a>
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="menu menu-horizontal px-1">
+                        <li><a class="text-lg text-primary font-bold" href="index.html">Home</a></li>
+                        <li><a class="text-lg" href="products.html">Products</a></li>
+                        <li><a class="text-lg" href="about.html">About</a></li>
+                        <li><a class="text-lg" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <a><i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i></a>
+                    <div class="dropdown lg:hidden dropdown-end ms-3">
+                        <label tabindex="0" class="btn btn-ghost">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                class="inline-block h-5 w-5 stroke-current">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </label>
 
+                        <ul tabindex="0"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[100] mt-5 w-52 p-2 shadow">
+                            <li><a class="text-base text-primary font-bold" href="index.html">Home</a></li>
+                            <li><a class="text-base" href="products.html">Products</a></li>
+                            <li><a class="text-base" href="about.html">About</a></li>
+                            <li><a class="text-base" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <main>
@@ -40,7 +74,7 @@
     <footer>
 
     </footer>
-    <script src="script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
