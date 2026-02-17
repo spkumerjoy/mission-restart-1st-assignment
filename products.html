@@ -44,15 +44,15 @@
                     </ul>
                 </div>
                 <div class="navbar-end">
-                    <div class="relative inline-block">
-                        <a class="text-gray-800">
+                    <div id="open-cart" class="relative inline-block">
+                        <button class="text-gray-800">
                             <i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
-                        </a>
-                        <span class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                                    bg-red-500 text-white text-xs md:text-sm font-bold rounded-full 
+                        </button>
+                        <p id="cart-count" class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                                    text-white text-xs md:text-sm font-bold rounded-full 
                                     w-5 h-5 flex items-center justify-center">
-                            0
-                        </span>
+
+                        </p>
                     </div>
 
                     <div class="dropdown lg:hidden dropdown-end ms-3">
@@ -84,6 +84,9 @@
             </div>
             <div id="category-container" class="flex gap-5 flex-wrap justify-center mt-5">
 
+            </div>
+            <div id="loading-spinner" class="hidden flex justify-center py-10">
+                <span class="loading loading-bars loading-xl"></span>
             </div>
             <div id="our-products" class="grid gap-8 py-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
                 <!-- Dynamic data will come from javascript here -->

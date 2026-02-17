@@ -1,10 +1,13 @@
 const loadAllProducts = () => {
+    const spinner = document.getElementById("loading-spinner");
+    spinner.classList.remove("hidden");
     fetch("https://fakestoreapi.com/products")
         .then((res) => res.json())
         .then((products) => {
             displayTrendingProducts(products);
             displayAllProducts(products);
-        });
+        })
+        .finally(() => spinner.classList.add("hidden"));
 };
 
 const createProductCard = (product) => {
@@ -37,7 +40,7 @@ const createProductCard = (product) => {
                         <i class="fa-regular fa-eye"></i>
                         Details
                     </button>
-                    <button
+                    <button onclick="addToCart(${product.id})"
                         class="btn btn-soft bg-primary hover:bg-primary-content hover:text-primary text-white border-none shadow rounded-lg flex-1 font-medium">
                         <i class="fa-solid fa-cart-shopping"></i>
                         Add
@@ -82,7 +85,7 @@ const displayCategories = (categories) => {
         allButtons.forEach((btn) => btn.classList.remove("btn-active"));
         allBtn.classList.add("btn-active");
 
-        loadAllProducts(); // show all products again
+        loadAllProducts();
     });
 
     for (let category of categories) {
@@ -108,9 +111,12 @@ const displayCategories = (categories) => {
 };
 
 const loadCategoryProduct = (category) => {
+    const spinner = document.getElementById("loading-spinner");
+    spinner.classList.remove("hidden");
     fetch(`https://fakestoreapi.com/products/category/${category}`)
         .then((res) => res.json())
-        .then((products) => displayAllProducts(products));
+        .then((products) => displayAllProducts(products))
+        .finally(() => spinner.classList.add("hidden"));
 };
 
 const displayAllProducts = (products) => {
@@ -148,7 +154,7 @@ const displayModalDetails = (product) => {
                 </div>
             </div>
             <div class="flex gap-5">
-                <button
+                <button onclick="addToCart(${product.id})"
                     class="btn btn-soft bg-primary hover:bg-primary-content hover:text-primary text-white border-none shadow rounded-lg flex-1 font-medium">
                     <i class="fa-solid fa-cart-shopping"></i>
                     Add to Cart
@@ -156,6 +162,65 @@ const displayModalDetails = (product) => {
             </div>
         </div>
     `;
+    document.getElementById("product_modal").showModal();
+};
+
+// Cart JS
+let cart = [];
+const updateCartCount = () => {
+    document.getElementById("cart-count").textContent = cart.length;
+};
+
+const addToCart = async (id) => {
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const product = await res.json();
+
+    cart.push(product);
+    updateCartCount();
+};
+
+document.getElementById("open-cart").addEventListener("click", () => {
+    displayCartProducts(cart);
+});
+
+const displayCartProducts = (cartItems) => {
+    const detailsModal = document.getElementById("modal-container");
+    let totalAmount = 0;
+    if (cartItems.length === 0) {
+        detailsModal.innerHTML = `
+            <div class="p-6 text-center">
+                <h2 class="text-lg font-semibold">Your Cart is Empty 🛒</h2>
+            </div>
+        `;
+    } else {
+        detailsModal.innerHTML = `
+            <div class="p-6 space-y-4">
+                <h2 class="text-xl font-bold">Shopping Cart</h2>
+
+                <div class="space-y-3 max-h-60 overflow-y-auto">
+                    ${cartItems
+                        .map(
+                            (product) => `
+                        <div class="flex justify-between border-b pb-2">
+                            <div>
+                                <h3 class="text-sm font-medium">${product.title}</h3>
+                                <p class="text-xs text-gray-500">${product.category}</p>
+                            </div>
+                            <p class="font-semibold">$${product.price}</p>
+                        </div>
+                    `,
+                        )
+                        .join("")}
+                </div>
+
+                <div class="flex justify-between font-bold text-lg">
+                    <span>Total:</span>
+                    <span>$${cartItems.reduce((t, p) => t + p.price, 0).toFixed(2)}</span>
+                </div>
+            </div>
+        `;
+    }
+
     document.getElementById("product_modal").showModal();
 };
 
