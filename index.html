@@ -44,7 +44,17 @@
                     </ul>
                 </div>
                 <div class="navbar-end">
-                    <a><i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i></a>
+                    <div class="relative inline-block">
+                        <a class="text-gray-800">
+                            <i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+                        </a>
+                        <span class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                                    bg-red-500 text-white text-xs md:text-sm font-bold rounded-full 
+                                    w-5 h-5 flex items-center justify-center">
+                            0
+                        </span>
+                    </div>
+
                     <div class="dropdown lg:hidden dropdown-end ms-3">
                         <label tabindex="0" class="btn btn-ghost">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -141,14 +151,90 @@
                 <h2 class="text-2xl md:text-3xl font-bold">Trending Now</h2>
             </div>
             <div id="trending" class="grid gap-8 py-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-
+                <!-- Dynamic data will come from javascript here -->
             </div>
         </section>
     </main>
 
-    <footer>
-
+    <footer class="bg-slate-900 text-white">
+        <section class="w-11/12 mx-auto px-4 py-12 
+                    grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 
+                    gap-8 border-b border-slate-700">
+            <div>
+                <h2 class="text-indigo-400 text-2xl font-semibold">SwiftCart</h2>
+                <p class="text-slate-400 mt-4 text-sm leading-relaxed">
+                    Your one-stop shop for all your fashion and lifestyle needs.
+                    Quality products, fast delivery, and excellent support.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-indigo-300 font-semibold uppercase text-sm tracking-wider">
+                    Quick Links
+                </h3>
+                <ul class="space-y-2 mt-4 text-sm">
+                    <li><a class="text-slate-300 hover:text-white transition" href="index.html">Home</a></li>
+                    <li><a class="text-slate-300 hover:text-white transition" href="products.html">Products</a></li>
+                    <li><a class="text-slate-300 hover:text-white transition" href="about.html">About</a></li>
+                    <li><a class="text-slate-300 hover:text-white transition" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-indigo-300 font-semibold uppercase text-sm tracking-wider">
+                    Support
+                </h3>
+                <ul class="space-y-2 mt-4 text-sm">
+                    <li><a href="#" class="text-slate-300 hover:text-white transition">FAQ</a></li>
+                    <li><a href="#" class="text-slate-300 hover:text-white transition">Shipping</a></li>
+                    <li><a href="#" class="text-slate-300 hover:text-white transition">Returns</a></li>
+                    <li><a href="#" class="text-slate-300 hover:text-white transition">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-indigo-300 font-semibold uppercase text-sm tracking-wider">
+                    Subscribe To Our Newsletter
+                </h3>
+                <p class="text-slate-400 mt-4 text-sm">
+                    The latest news, articles, and resources, sent to your inbox weekly.
+                </p>
+                <form class="mt-4">
+                    <div class="flex flex-col sm:flex-row gap-2">
+                        <input type="email" placeholder="Enter Your Email" class="w-full px-4 py-2 rounded-md bg-slate-800 
+                            border border-slate-700 text-sm 
+                            focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                        <button class="px-4 py-2 bg-indigo-500 hover:bg-indigo-600 
+                            rounded-md text-sm font-medium transition">
+                            Subscribe
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="w-11/12 mx-auto py-6 
+                    flex flex-col-reverse md:flex-row 
+                    items-center justify-between gap-4">
+            <p class="text-slate-400 text-sm text-center md:text-left">
+                &copy; 2025 SwiftCart, Inc. All rights reserved.
+            </p>
+            <div class="flex space-x-5 text-slate-400 text-lg">
+                <a href="#" class="hover:text-white transition">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#" class="hover:text-white transition">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="#" class="hover:text-white transition">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="#" class="hover:text-white transition">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="hover:text-white transition">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </div>
+        </section>
     </footer>
+
     <script src="./assets/js/script.js"></script>
 </body>
 
