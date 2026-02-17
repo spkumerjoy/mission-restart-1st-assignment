@@ -1,3 +1,4 @@
+// load all products data
 const loadAllProducts = () => {
     const spinner = document.getElementById("loading-spinner");
     spinner.classList.remove("hidden");
@@ -10,6 +11,7 @@ const loadAllProducts = () => {
         .finally(() => spinner.classList.add("hidden"));
 };
 
+// Product card
 const createProductCard = (product) => {
     const card = document.createElement("div");
     card.className =
@@ -51,6 +53,7 @@ const createProductCard = (product) => {
     return card;
 };
 
+// Display Trending Product Function
 const displayTrendingProducts = (products) => {
     const trendingContainer = document.getElementById("trending");
     if (!trendingContainer) return;
@@ -62,12 +65,14 @@ const displayTrendingProducts = (products) => {
     });
 };
 
+// Load all categories name
 const loadCategories = () => {
     fetch("https://fakestoreapi.com/products/categories")
         .then((res) => res.json())
         .then((categories) => displayCategories(categories));
 };
 
+// Display Categories name with button Function
 const displayCategories = (categories) => {
     const categoryContainer = document.getElementById("category-container");
     if (!categoryContainer) return;
@@ -81,10 +86,11 @@ const displayCategories = (categories) => {
 
     allBtn.addEventListener("click", () => {
         const allButtons = categoryContainer.querySelectorAll(".category-btn");
-
+        // remove active from all buttons
         allButtons.forEach((btn) => btn.classList.remove("btn-active"));
+        // add active to clicked button
         allBtn.classList.add("btn-active");
-
+        //load all products
         loadAllProducts();
     });
 
@@ -103,13 +109,14 @@ const displayCategories = (categories) => {
             allButtons.forEach((btn) => btn.classList.remove("btn-active"));
             // add active to clicked button
             categoryButton.classList.add("btn-active");
-            // load words
+            // load product
             loadCategoryProduct(category);
         });
         categoryContainer.append(btnDiv);
     }
 };
 
+// Load Product by Category
 const loadCategoryProduct = (category) => {
     const spinner = document.getElementById("loading-spinner");
     spinner.classList.remove("hidden");
@@ -119,6 +126,7 @@ const loadCategoryProduct = (category) => {
         .finally(() => spinner.classList.add("hidden"));
 };
 
+// Display all products function
 const displayAllProducts = (products) => {
     const allProductsContainer = document.getElementById("our-products");
     if (!allProductsContainer) return;
@@ -128,12 +136,14 @@ const displayAllProducts = (products) => {
     });
 };
 
+// Load Product Details by id
 const loadProductDetails = async (id) => {
     const res = await fetch(`https://fakestoreapi.com/products/${id}`);
     const details = await res.json();
     displayModalDetails(details);
 };
 
+// Display Modal Function for show Details
 const displayModalDetails = (product) => {
     const detailsModal = document.getElementById("modal-container");
     detailsModal.innerHTML = `
@@ -183,6 +193,7 @@ document.getElementById("open-cart").addEventListener("click", () => {
     displayCartProducts(cart);
 });
 
+// Display Cart Items
 const displayCartProducts = (cartItems) => {
     const detailsModal = document.getElementById("modal-container");
     let totalAmount = 0;
